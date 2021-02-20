@@ -128,7 +128,7 @@ const manufacturingBusinesses = [
   },
 ]
 
-// Print Active Businesses
+// FOREACH - Print Active Businesses
 const printActive = document.getElementById("active")
 printActive.innerHTML = "<h1>Active Businesses</h1>"
 
@@ -144,22 +144,40 @@ businesses.forEach(business => {
 });
 
 
-// Print New York businesses
+// FILTER - Big Spenders
+const printBigSpenders = document.querySelector("#bigSpenders")
+printBigSpenders.innerHTML = "<h1>Big Spenders</h1>"
+
+businesses.forEach(business => {
+  let totalOrders = 0
+  business.orders.forEach(order => totalOrders += order)
+
+  printBigSpenders.innerHTML += `
+      <h2>${business.companyName}</h2>
+      <section>Monthly Revenue</section>
+      <h4>$${totalOrders}</h4>`;
+
+  printBigSpenders.innerHTML += "<hr/>";
+});
+
+
+// FILTER - New York businesses
 const printNY = document.querySelector('#NY')
 printNY.innerHTML = `<h1>New York Businesses</h1>`;
   businesses.filter(business => {
   if (business.addressStateCode === "NY") {
     printNY.innerHTML += `
-    <h2>${business.companyName}</h2>
-    <section>${business.addressFullStreet}</section>
-    <section>${business.addressCity}</section>
-    <section>${business.addressStateCode}</section>`
+      <h2>${business.companyName}</h2>
+      <section>${business.addressFullStreet}</section>
+      <section>${business.addressCity}</section>
+      <section>${business.addressStateCode}</section>`
+
     printNY.innerHTML += "<hr/>"
 }
 });
 
 
-// New Array to contain all the manufacturing businesses
+// FOREACH - New Array to contain all man businesses
 const printMB = document.getElementById("manufacturing")
 printMB.innerHTML = "<h1>Manufacturing Businesses</h1>"
 
@@ -175,7 +193,7 @@ manufacturingBusinesses.forEach(manBusiness => {
 });
 
 
-// New Array to contain all the purchasing agents
+// MAP - New Array to contain all the purchasing agents
 const printAgent = document.getElementById("agent")
 printAgent.innerHTML += "<h1>Purchasing Agents</h1>";
 
@@ -199,7 +217,8 @@ agents.forEach(agent => {
 });
 
 
- //SEARCH COMPANIES
+
+ //FIND - SEARCH COMPANIES
 const printBusinessFilter = document.getElementById("businessSearch")
 
 printBusinessFilter.addEventListener("keypress", keyPressEvent => {
@@ -212,14 +231,17 @@ printBusinessFilter.addEventListener("keypress", keyPressEvent => {
             printBusinessFilter.innerHTML = `
                 <h2>${foundBusiness.companyName}</h2>
                 <section>${foundBusiness.addressFullStreet}</section>
-                <section>${foundBusiness.addressCity},
+                <section>
+                ${foundBusiness.addressCity}
                 ${foundBusiness.addressStateCode}
-                ${foundBusiness.addressZipCode}</section>`;
-                console.log(printCompanySearch);
+                ${foundBusiness.addressZipCode}
+                </section>`;
         }
     });
 
-  //SEARCH AGENTS
+
+
+  //FIND - SEARCH AGENTS
 const printAgentSearch = document.getElementById("agentSearch")
 
   printAgentSearch.addEventListener("keypress", keyPressEvent => {
