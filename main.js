@@ -111,42 +111,6 @@ const businesses = [
   }
 ];
 
-//FOR EACH TO GRAB BUSINESS NAME AND ADDRESS
-//Use dynamic square bracket notation to add the zip code.
-const outEl = document.querySelector("#output")
-outEl.innerHTML = "<h1>Active Businesses</h1>"
-
-businesses.forEach(business => {
-  outEl.innerHTML += `
-    <h2>${business.companyName}</h2>
-    <section>
-      ${business.addressFullStreet}
-    </section>
-    <section>
-    ${business.addressFullStreet.addressCity} Use dynamic square bracket notation to add the zip code.
-  </section>
-  `
-  outEl.innerHTML += "<hr/>"
-});
-
-
-// FITLER Array to contain all the New York businesses
-const newYorkBusinesses = businesses.filter(business => {
-  let inNewYork = false
-
-  if (business.addressStateCode === "NY") {
-      inNewYork = true
-  }
-
-  return inNewYork
-})
-
-
-
-
-// Use filter() to create another array named 
-// manufacturingBusinesses that will contain all businesses in the manufacturing industry. 
-// Display those to the DOM.
 const manufacturingBusinesses = [
   {
     companyName: "Dan-dox",
@@ -164,12 +128,89 @@ const manufacturingBusinesses = [
   },
 ]
 
-const manufacturingBusinesses = businesses.filter(business => {
-  let inNewYork = false
+const manufacturingusinesses = [
+  {
+    companyName: "Don-dox",
+    addressZipCode: "98842",
+    addressStateCode: "WV",
+    addressFullStreet: "9767 Cedar Court Corner",
+    addressCity: "Prince George"
+  },
+  {
+    companyName: "Ran-taxon",
+    addressZipCode: "96673",
+    addressStateCode: "MD",
+    addressFullStreet: "7157 Hudson Street Ford",
+    addressCity: "Watrous"
+  },
+]
 
-  if (business.addressStateCode === "NY") {
-      inNewYork = true
-  }
 
-  return inNewYork
+const printActive = document.getElementById("active")
+printActive.innerHTML = "<h1>Active Businesses</h1>"
+
+businesses.forEach(business => {
+  printActive.innerHTML += `
+    <h2>${business.companyName}</h2>
+    <section>${business.addressFullStreet}</section>
+    <section>${business.addressCity}</section>
+    <section>${business['addressStateCode']}</section>
+    <section>${business['addressZipCode']}</section>`;
+
+  printActive.innerHTML += "<hr/>"
+});
+
+
+// Array to contain all the New York businesses
+
+// const newYorkBusinesses = businesses.filter(business => {
+//   let inNewYork = false
+
+//   if (business.addressStateCode === "NY") {
+//       inNewYork = true
+//   }
+
+//   return inNewYork
+// });
+
+
+// New Array to contain all the manufacturing businesses
+
+const printMB = document.getElementById("manufacturing")
+printMB.innerHTML = "<h1>Manufacturing Businesses</h1>"
+
+manufacturingBusinesses.forEach(manBusiness => {
+  printMB.innerHTML += `
+    <h2>${manBusiness.companyName}</h2>
+    <section>${manBusiness.addressFullStreet}</section>
+    <section>${manBusiness.addressCity}</section>
+    <section>${manBusiness['addressStateCode']}</section>
+    <section>${manBusiness['addressZipCode']}</section>`;
+
+    printMB.innerHTML += "<hr/>"
+});
+
+
+
+
+const printAgent = document.getElementById("agent")
+printAgent.innerHTML += "<h1>Purchasing Agents</h1>";
+
+const agents = businesses.map(business => {
+return {
+    fullName: `${business.purchasingAgent.nameFirst} ${business.purchasingAgent.nameLast}`,
+    company: business.companyName,
+    phoneNumber: business.phoneWork,
+}
 })
+
+console.table(agents)
+
+agents.forEach(agent => {
+  printAgent.innerHTML += `
+    <h2>${agent.fullName}</h2>
+    <section>${agent.company}</section>
+    <section>${agent.phoneNumber}</section>`;
+
+  printAgent.innerHTML += "<hr/>";
+});
