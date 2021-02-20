@@ -1,36 +1,26 @@
-body {
-  display: flex;
-  justify-content: center;
-}
-
-.left {
-  display: flex;
-  justify-content: center;
-
-}
-
-.right {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
  #active {
    background-color: lightgrey;
    padding-left: .5em;
-   width: 15em;
+   width: 20em;
 
  }
+
+ #NY {
+  background-color: blueviolet;
+  padding-left: .5em;
+  width: 20em;
+
+}
 
  #manufacturing {
   background-color: grey;
   padding-left: .5em;
-  width: 25em;
+  width: 20em;
  }
 
  #agent {
-   background-color: green;
+   background-color: lightseagreen;
    padding-left: .5em;
-   width: 15em;
+   width: 20em;
 
  }
