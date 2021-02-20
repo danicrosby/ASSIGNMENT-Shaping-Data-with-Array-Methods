@@ -2,14 +2,18 @@
    background-color: lightgrey;
    padding-left: .5em;
    width: 20em;
-
  }
+
+ #bigSpenders {
+  background-color: lightcoral;
+  padding-left: .5em;
+  width: 20em;
+}
 
  #NY {
   background-color: blueviolet;
   padding-left: .5em;
   width: 20em;
-
 }
 
  #manufacturing {
@@ -22,5 +26,4 @@
    background-color: lightseagreen;
    padding-left: .5em;
    width: 20em;
-
  }
