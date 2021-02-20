@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+ #active {
+   background-color: lightgrey;
+   padding-left: .5em;
+   width: 15em;
+
+ }
+
+ #manufacturing {
+  background-color: grey;
+  padding-left: .5em;
+  width: 25em;
+ }
+
+ #agent {
+   background-color: green;
+   padding-left: .5em;
+   width: 15em;
+
+ }
